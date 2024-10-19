@@ -13,53 +13,78 @@ client = discord.Client(
 tree=app_commands.CommandTree(client)
 
 TOKEN = os.getenv("TOKEN")
-CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
-omikuzi_list: list = ["大吉", "中吉", "小吉", "吉", "末吉", "凶", "大凶", "大福吉"]
-# 5, 15, 20, 30, 20, 15, 5, 1
+#omikuzi_list: list = ["大吉", "中吉", "小吉", "吉", "末吉", "凶", "大凶", "大福吉"]
+omikuji_list: list = [
+  {
+    "name": "大吉",
+    "description": "やったわね！大吉よ！",
+    "color": 0xffd700,
+    "probability": 0.05
+  },
+  {
+    "name": "中吉",
+    "description": "中吉ね！なんかいいことあるかもしれないわ！",
+    "color": 0x00ff00,
+    "probability": 0.1
+  },
+  {
+    "name": "小吉",
+    "description": "小吉よ！まあまあいいことがあるかもね",
+    "color": 0xffffff,
+    "probability": 0.2
+  },
+  {
+    "name": "吉",
+    "description": "吉ね！今日もいつも通りの一日になりそうね",
+    "color": 0xffffff,
+    "probability": 0.3
+  },
+  {
+    "name": "末吉",
+    "description": "末吉よ。ちょっとだけいいことがあるかもね",
+    "color": 0xffffff,
+    "probability": 0.2
+  },
+  {
+    "name": "凶",
+    "description": "凶ね...めげないでね...",
+    "color": 0xff0000,
+    "probability": 0.1
+  },
+  {
+    "name": "大凶",
+    "description": "まずいわ...大凶よ...気をつけてね...",
+    "color": 0x000000,
+    "probability": 0.05
+  },
+  {
+    "name": "大福吉",
+    "description": "これは...なんかよくわからないけどおめでとう...？",
+    "color": 0xffffff,
+    "probability": 0.005
+  }
+]
 
-@tree.command(name="omikuzi", description="今日の運勢を占うわよ")
+@tree.command(name="omikuji", description="今日の運勢を占うわよ")
 async def omikuzi(interaction: discord.Interaction):
-  fortune: str
-  description: str
-  color: int
-
+  omikuji: dict = {}
   random.seed(time.time())
-  random_int = random.randint(0, 111)
+  total_probability = sum(item['probability'] for item in omikuji_list)
+  pick = random.uniform(0, total_probability)
+  current = 0
+  for item in omikuji_list:
+    current += item['probability']
+    if current > pick:
+      omikuji = item
+      break
 
-  if random_int < 5:
-    fortune = omikuzi_list[0]
-    description = "やったわね！大吉よ！"
-    color = 0xff0000
-  elif random_int < 20:
-    fortune = omikuzi_list[1]
-    description = "中吉ね！なんかいいことあるかもしれないわ！"
-  elif random_int < 40:
-    fortune = omikuzi_list[2]
-    description = "小吉よ！"
-  elif random_int < 70:
-    fortune = omikuzi_list[3]
-    description = "吉ね！今日もいつも通りの一日になりそうね"
-  elif random_int < 90:
-    fortune = omikuzi_list[4]
-    description = "末吉よ。ちょっとだけいいことがあるかもね"
-  elif random_int < 105:
-    fortune = omikuzi_list[5]
-    description = "凶ね...めげないでね..."
-  elif random_int < 110:
-    fortune = omikuzi_list[6]
-    description = "まずいわ...大凶よ...気をつけてね..."
-  elif random_int < 111:
-    fortune = omikuzi_list[7]
-    description = "これは...なんかよくわからないけどおめでとう...？"
-    color = 0xffff00
 
   omikuzi_embed = discord.Embed(
-    title=fortune,
-    description=description,
-    color=color
+    title=omikuji['name'],
+    description=omikuji['description'],
+    color=omikuji['color']
   )
-  channel = client.get_channel(CHANNEL_ID)
   await interaction.response.send_message(embed=omikuzi_embed)
 
 @client.event
