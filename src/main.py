@@ -32,19 +32,19 @@ omikuji_list: list = [
     "name": "小吉",
     "description": "小吉よ！まあまあいいことがあるかもね",
     "color": 0xffffff,
-    "probability": 0.2
+    "probability": 0.15
   },
   {
     "name": "吉",
     "description": "吉ね！今日もいつも通りの一日になりそうね",
     "color": 0xffffff,
-    "probability": 0.3
+    "probability": 0.2
   },
   {
     "name": "末吉",
     "description": "末吉よ。ちょっとだけいいことがあるかもね",
     "color": 0xffffff,
-    "probability": 0.2
+    "probability": 0.15
   },
   {
     "name": "凶",
