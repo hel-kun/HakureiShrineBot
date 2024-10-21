@@ -20,13 +20,13 @@ omikuji_list: list = [
     "name": "大吉",
     "description": "やったわね！大吉よ！",
     "color": 0xffd700,
-    "probability": 0.05
+    "probability": 0.1
   },
   {
     "name": "中吉",
     "description": "中吉ね！なんかいいことあるかもしれないわ！",
     "color": 0x00ff00,
-    "probability": 0.1
+    "probability": 0.15
   },
   {
     "name": "小吉",
@@ -50,19 +50,19 @@ omikuji_list: list = [
     "name": "凶",
     "description": "凶ね...めげないでね...",
     "color": 0xff0000,
-    "probability": 0.1
+    "probability": 0.15
   },
   {
     "name": "大凶",
     "description": "まずいわ...大凶よ...気をつけてね...",
     "color": 0x000000,
-    "probability": 0.05
+    "probability": 0.1
   },
   {
     "name": "大福吉",
     "description": "これは...なんかよくわからないけどおめでとう...？",
     "color": 0xffffff,
-    "probability": 0.005
+    "probability": 0.01
   }
 ]
 
