@@ -8,7 +8,7 @@ load_dotenv()
 
 client = discord.Client(
   intents=discord.Intents.default(),
- activity=discord.Game("異変解決")
+  activity=discord.Game("異変解決")
 )
 tree=app_commands.CommandTree(client)
 
@@ -66,8 +66,7 @@ omikuji_list: list = [
   }
 ]
 
-@tree.command(name="omikuji", description="今日の運勢を占うわよ")
-async def omikuzi(interaction: discord.Interaction):
+def get_omikuji() -> dict:
   omikuji: dict = {}
   random.seed(time.time())
   total_probability = sum(item['probability'] for item in omikuji_list)
@@ -78,7 +77,16 @@ async def omikuzi(interaction: discord.Interaction):
     if current > pick:
       omikuji = item
       break
+  return omikuji
 
+@tree.command(name="ping", description="Botの応答速度を測るわよ")
+async def ping(interaction: discord.Interaction):
+  await interaction.response.send_message("Pong!")
+
+@tree.command(name="omikuji", description="今日の運勢を占うわよ")
+async def omikuji(interaction: discord.Interaction):
+  omikuji: dict = {}
+  omikuji = get_omikuji()
 
   omikuzi_embed = discord.Embed(
     title=omikuji['name'],
@@ -86,6 +94,21 @@ async def omikuzi(interaction: discord.Interaction):
     color=omikuji['color']
   )
   await interaction.response.send_message(embed=omikuzi_embed)
+
+@tree.command(name="omikuji_x10", description="10回連続でおみくじを引くわよ")
+async def omikuji_x10(interaction: discord.Interaction):
+  omikuji_x10_results: list = []
+  omikuji_x10_embed: list = []
+  for i in range(10):
+    omikuji: dict = get_omikuji()
+    omikuji_x10_results.append(omikuji)
+    omikuji_x10_embed.append(discord.Embed(
+      title=omikuji['name'],
+      description=omikuji['description'],
+      color=omikuji['color']
+    ))
+  
+  await interaction.response.send_message(embeds=omikuji_x10_embed)
 
 @client.event
 async def on_ready():
