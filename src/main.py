@@ -18,49 +18,79 @@ TOKEN = os.getenv("TOKEN")
 omikuji_list: list = [
   {
     "name": "大吉",
-    "description": "やったわね！大吉よ！",
+    "description": [
+      "やったわね！大吉よ！",
+      "今日の異変解決はきっと大丈夫ね！",
+    ],
     "color": 0x00ff00,
     "probability": 0.1
   },
   {
     "name": "中吉",
-    "description": "中吉ね！なんかいいことあるかもしれないわ！",
+    "description": [
+      "中吉ね！なんかいいことあるかもしれないわ！",
+    ],
     "color": 0x00ff00,
     "probability": 0.15
   },
   {
     "name": "小吉",
-    "description": "小吉よ！まあまあいいことがあるかもね",
+    "description": [
+      "小吉よ！まあまあいいことがあるかもね"
+    ],
     "color": 0xffffff,
     "probability": 0.15
   },
   {
     "name": "吉",
-    "description": "吉ね！今日もいつも通りの一日になりそうね",
+    "description": [
+      "吉ね！今日もいつも通りの一日になりそうね",
+    ],
     "color": 0xffffff,
     "probability": 0.2
   },
   {
     "name": "末吉",
-    "description": "末吉よ。ちょっとだけいいことがあるかもね",
+    "description": [
+      "末吉よ。ちょっとだけいいことがあるかもね",
+    ],
     "color": 0xffffff,
     "probability": 0.15
   },
   {
     "name": "凶",
-    "description": "凶ね...めげないでね...",
+    "description": [
+      "凶ね...めげないでね...",
+      "お祓いに行った方がいいかも..."
+    ],
     "color": 0xff0000,
     "probability": 0.15
   },
   {
     "name": "大凶",
-    "description": "まずいわ...大凶よ...気をつけてね...",
+    "description": [
+      "まずいわ...大凶よ...気をつけてね...",
+      "今日は余計なことをしない方がいいかもしれない...",
+      "もう残機ゼロよ..."
+    ],
     "color": 0xff0000,
     "probability": 0.1
   },
   {
     "name": "大福吉",
-    "description": "これは...なんかよくわからないけどおめでとう...？",
+    "description": [
+      "「よくわかんないけどとりあえずよし！」",
+      "「うーん、まあいいんじゃないかなぁ」"
+    ],
+    "color": 0xffd700,
+    "probability": 0.01
+  },
+  {
+    "name": "もちもち吉",
+    "description": [
+      "過労死には要注意",
+      "タスクの掛け持ちはほどほどに",
+    ],
     "color": 0xffd700,
     "probability": 0.01
   }
@@ -79,10 +109,6 @@ def get_omikuji() -> dict:
       break
   return omikuji
 
-@tree.command(name="ping", description="Botの応答速度を測るわよ")
-async def ping(interaction: discord.Interaction):
-  await interaction.response.send_message("Pong!")
-
 @tree.command(name="omikuji", description="今日の運勢を占うわよ")
 async def omikuji(interaction: discord.Interaction):
   omikuji: dict = {}
@@ -90,7 +116,7 @@ async def omikuji(interaction: discord.Interaction):
 
   omikuzi_embed = discord.Embed(
     title=omikuji['name'],
-    description=omikuji['description'],
+    description=random.choice(omikuji['description']),
     color=omikuji['color']
   )
   await interaction.response.send_message(embed=omikuzi_embed)
@@ -104,7 +130,7 @@ async def omikuji_x10(interaction: discord.Interaction):
     omikuji_x10_results.append(omikuji)
     omikuji_x10_embed.append(discord.Embed(
       title=omikuji['name'],
-      description=omikuji['description'],
+      description=random.choice(omikuji['description']),
       color=omikuji['color']
     ))
   
