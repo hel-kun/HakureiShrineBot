@@ -98,7 +98,8 @@ omikuji_list: list = [
 
 def get_omikuji() -> dict:
   omikuji: dict = {}
-  random.seed(time.time())
+  time.sleep(0.001)
+  random.seed(time.time() * 1000)
   total_probability = sum(item['probability'] for item in omikuji_list)
   pick = random.uniform(0, total_probability)
   current = 0
