@@ -74,7 +74,7 @@ omikuji_list: list = [
       "もう残機ゼロよ..."
     ],
     "color": 0xff0000,
-    "probability": 0.1
+    "probability": 0.08
   },
   {
     "name": "大福吉",
