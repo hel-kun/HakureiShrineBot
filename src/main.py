@@ -64,7 +64,7 @@ omikuji_list: list = [
       "お祓いに行った方がいいかも..."
     ],
     "color": 0xff0000,
-    "probability": 0.15
+    "probability": 0.14
   },
   {
     "name": "大凶",
@@ -92,6 +92,15 @@ omikuji_list: list = [
       "タスクの掛け持ちはほどほどに",
     ],
     "color": 0xffd700,
+    "probability": 0.01
+  },
+  {
+    "name": "あすなろ凶",
+    "description": [
+      "「クソがよぉ」",
+      "「バカがよぉ」"
+    ],
+    "color": 0x000000,
     "probability": 0.01
   }
 ]
