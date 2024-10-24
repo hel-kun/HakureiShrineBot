@@ -14,7 +14,7 @@ client = discord.Client(
 )
 tree=app_commands.CommandTree(client)
 
-omikuji_list: list = json.load(open('src/omikuji.json', 'r'))
+omikuji_list: list = json.load(open('src/omikuji.json', 'r', encoding="utf-8"))
 
 def get_omikuji() -> dict:
   omikuji: dict = {}
