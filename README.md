@@ -4,28 +4,17 @@
 東方Project同好会サークルのディスコード鯖でおみくじを引くためのBot。
 
 ## 実行方法
-1. python環境構築を行う。
-2. discordパッケージをインストール。
-3. pipの場合
+1. Node.jsとnpmをインストール
+2. このリポジトリをクローン
+3. `HakureiShrineBot`ディレクトリに移動
+4. 以下のコマンドを実行
 ```bash
-pip install discord
+npm install
+npm run compile
 ```
-anacondaの場合
+5. Botを実行する！
 ```bash
-conda install discord
-```
-3. このリポジトリをクローンする。
-4. HakureiShrineBotディレクトリに移動。
-```bash
-cd HakureiShrineBot/
-```
-5. .envファイルを作成し、tokenを入力(以下、.envファイル内の例)
-```
-TOKEN="abcdefghij"
-```
-6. pythonコマンドを実行
-```bash
-python3 src/main.py
+npm run start
 ```
 
 ## 免責
