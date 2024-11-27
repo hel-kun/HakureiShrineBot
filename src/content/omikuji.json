@@ -66,7 +66,7 @@
       "「うーん、まあいいんじゃないかなぁ」"
     ],
     "color": "0xffd700",
-    "probability": 0.01
+    "probability": 0.005
   },
   {
     "name": "もちもち吉",
@@ -75,7 +75,7 @@
       "タスクの掛け持ちはほどほどに"
     ],
     "color": "0xffd700",
-    "probability": 0.01
+    "probability": 0.005
   },
   {
     "name": "あすなろ凶",
@@ -84,6 +84,42 @@
       "「バカがよぉ」"
     ],
     "color": "0x000000",
-    "probability": 0.01
+    "probability": 0.005
+  }
+  {
+    "name": "あかつき凶",
+    "description": [
+      "「地力が足りない」",
+      "「バカ。アホ。帰れ。」"
+    ],
+    "color": "0x000000",
+    "probability": 0.005
+  },
+  {
+    "name": "たむ吉",
+    "description": [
+      "締め切りを守ればいいことがあるよ！",
+      "コスプレをしよう！楽しいよ！"
+    ],
+    "color": "0xffd700",
+    "probability": 0.005
+  },
+  {
+    "name": "「」凶",
+    "description": [
+      "「私は、どうして、こんなことを、やっているの、でしょうか、、、」",
+      "「もう、やめます、、、」"
+    ],
+    "color": "0x483d8b",
+    "probability": 0.001
+  },
+  {
+    "name": "へるくん凶",
+    "description": [
+      "「破産チャンス！」",
+      "「タスク抱えチャンス！」"
+    ],
+    "color": "0x000000",
+    "probability": 0.005
   }
 ]
