@@ -38,7 +38,7 @@
       "末吉よ。ちょっとだけいいことがあるかもね"
     ],
     "color": "0xffffff",
-    "probability": 0.15
+    "probability": 0.145
   },
   {
     "name": "凶",
@@ -120,6 +120,14 @@
       "「タスク抱えチャンス！」"
     ],
     "color": "0x000000",
+    "probability": 0.005
+  },
+  {
+    "name": "karaage",
+    "description": [
+      "「からあげをどうぞ！:karaage:」"
+    ],
+    "color": "0xffffff",
     "probability": 0.005
   }
 ]
