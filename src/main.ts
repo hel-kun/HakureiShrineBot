@@ -70,7 +70,10 @@ function getHistory(guildId: string, userId: string) {
   }
 
   const history = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  return history[userId] || {};
+  if (!history[userId]) {
+    return {};
+  }
+  return history[userId];
 }
 
 function getOmikuji(): Omikuji {
@@ -147,6 +150,7 @@ client.on('interactionCreate', async (interaction: Interaction) => {
     const historyEmbed = new EmbedBuilder()
       .setTitle(`${name}の過去のおみくじ結果`)
       .setDescription(
+        Object.keys(history).length === 0 ? 'おみくじの履歴はありません' :
         Object.entries(history).map(([name, count]) => `${name}: ${count}回`).join('\n')
       );
 
